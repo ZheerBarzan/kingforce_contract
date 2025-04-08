@@ -39,6 +39,7 @@ dependencies:
   open_file: ^3.3.2
   permission_handler: ^11.3.0
   intl: ^0.19.0
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -92,3 +93,18 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+  assets:
+    - assets/fonts/
+
+  fonts:
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans-Regular.ttf
+        - asset: assets/fonts/NotoSans-Bold.ttf
+          weight: 700
+    - family: NotoNaskhArabic
+      fonts:
+        - asset: assets/fonts/NotoNaskhArabic-Regular.ttf
+        - asset: assets/fonts/NotoNaskhArabic-Bold.ttf
+          weight: 700

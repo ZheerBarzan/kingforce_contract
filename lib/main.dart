@@ -16,6 +16,8 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
 import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/services.dart';
 import 'dart:io';
 import 'package:intl/intl.dart';
 
@@ -113,7 +115,6 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
       // Check and request storage permissions
       PermissionStatus status;
       if (Platform.isAndroid) {
-        // Request storage permission for Android
         if (await Permission.storage.isDenied) {
           status = await Permission.storage.request();
           if (status.isDenied) {
@@ -129,7 +130,6 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
           }
         }
         
-        // Request media permission for Android 13+
         if (await Permission.photos.isDenied) {
           status = await Permission.photos.request();
           if (status.isDenied) {
@@ -146,7 +146,10 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
         }
       }
 
-      // Create PDF document
+      // Load the Noto Naskh Arabic font which supports Kurdish characters
+      final ttf = await rootBundle.load('assets/fonts/NotoNaskhArabic-Regular.ttf');
+      final boldTtf = await rootBundle.load('assets/fonts/NotoNaskhArabic-Bold.ttf');
+
       final doc = pw.Document();
 
       // Add a page to the PDF with proper formatting
@@ -162,31 +165,49 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
                 pw.Header(
                   level: 0,
                   child: pw.Text('Security Guard Contract',
-                      style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold)),
+                      style: pw.TextStyle(
+                        fontSize: 24,
+                        fontWeight: pw.FontWeight.bold,
+                        font: pw.Font.ttf(boldTtf),
+                      )),
                 ),
                 // Guard's personal information
                 pw.SizedBox(height: 20),
-                pw.Text('This contract is made between KingForce Security and:'),
+                pw.Text('This contract is made between KingForce Security and:',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
                 pw.SizedBox(height: 10),
-                pw.Text('Name: ${_nameController.text}'),
-                pw.Text('ID Number: ${_idNumberController.text}'),
-                pw.Text('Address: ${_addressController.text}'),
-                pw.Text('Phone: ${_phoneController.text}'),
+                pw.Text('Name: ${_nameController.text}',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                pw.Text('ID Number: ${_idNumberController.text}',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                pw.Text('Address: ${_addressController.text}',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                pw.Text('Phone: ${_phoneController.text}',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
                 // Contract details
                 pw.SizedBox(height: 20),
-                pw.Text('Contract Details:'),
-                pw.Text('Start Date: ${_startDateController.text}'),
-                pw.Text('Monthly Salary: \$${_salaryController.text}'),
+                pw.Text('Contract Details:',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                pw.Text('Start Date: ${_startDateController.text}',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                pw.Text('Monthly Salary: \$${_salaryController.text}',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
                 // Terms and conditions
                 pw.SizedBox(height: 20),
-                pw.Text('Terms and Conditions:'),
-                pw.Text('1. The security guard agrees to maintain confidentiality.'),
-                pw.Text('2. The security guard will work assigned shifts.'),
-                pw.Text('3. The security guard will follow company policies.'),
+                pw.Text('Terms and Conditions:',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                pw.Text('1. The security guard agrees to maintain confidentiality.',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                pw.Text('2. The security guard will work assigned shifts.',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                pw.Text('3. The security guard will follow company policies.',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
                 // Signature section
                 pw.SizedBox(height: 20),
-                pw.Text('Signature: ___________________'),
-                pw.Text('Date: ${DateFormat('yyyy-MM-dd').format(DateTime.now())}'),
+                pw.Text('Signature: ___________________',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                pw.Text('Date: ${DateFormat('yyyy-MM-dd').format(DateTime.now())}',
+                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
               ],
             );
           },
