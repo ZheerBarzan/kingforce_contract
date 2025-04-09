@@ -27,16 +27,16 @@ class Sidebar extends StatelessWidget {
             leading: const Icon(Icons.description),
             title: const Text('دروستکردنی ڕێکەوتنامە'),
             onTap: () {
+              Navigator.pop(context); // Close the drawer first
               NavigationService.navigateTo('/generate');
-              Navigator.pop(context); // Close the drawer
             },
           ),
           ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('ڕێکخستنەکان'),
             onTap: () {
+              Navigator.pop(context); // Close the drawer first
               NavigationService.navigateTo('/settings');
-              Navigator.pop(context); // Close the drawer
             },
           ),
           const Spacer(),
@@ -45,8 +45,8 @@ class Sidebar extends StatelessWidget {
             leading: const Icon(Icons.person),
             title: const Text('پڕۆفایل'),
             onTap: () {
+              Navigator.pop(context); // Close the drawer first
               NavigationService.navigateTo('/profile');
-              Navigator.pop(context); // Close the drawer
             },
           ),
         ],

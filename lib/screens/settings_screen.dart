@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/sidebar.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -8,7 +9,9 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('ڕێکخستنەکان'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
+      drawer: const Sidebar(),
       body: const Center(
         child: Text('ڕێکخستنەکان'),
       ),
