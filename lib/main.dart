@@ -158,57 +158,60 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
           pageFormat: PdfPageFormat.a4,
           margin: const pw.EdgeInsets.all(32),
           build: (pw.Context context) {
-            return pw.Column(
-              crossAxisAlignment: pw.CrossAxisAlignment.start,
-              children: [
-                // Contract header
-                pw.Header(
-                  level: 0,
-                  child: pw.Text('Security Guard Contract',
-                      style: pw.TextStyle(
-                        fontSize: 24,
-                        fontWeight: pw.FontWeight.bold,
-                        font: pw.Font.ttf(boldTtf),
-                      )),
-                ),
-                // Guard's personal information
-                pw.SizedBox(height: 20),
-                pw.Text('This contract is made between KingForce Security and:',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.SizedBox(height: 10),
-                pw.Text('Name: ${_nameController.text}',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.Text('ID Number: ${_idNumberController.text}',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.Text('Address: ${_addressController.text}',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.Text('Phone: ${_phoneController.text}',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                // Contract details
-                pw.SizedBox(height: 20),
-                pw.Text('Contract Details:',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.Text('Start Date: ${_startDateController.text}',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.Text('Monthly Salary: \$${_salaryController.text}',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                // Terms and conditions
-                pw.SizedBox(height: 20),
-                pw.Text('Terms and Conditions:',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.Text('1. The security guard agrees to maintain confidentiality.',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.Text('2. The security guard will work assigned shifts.',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.Text('3. The security guard will follow company policies.',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                // Signature section
-                pw.SizedBox(height: 20),
-                pw.Text('Signature: ___________________',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-                pw.Text('Date: ${DateFormat('yyyy-MM-dd').format(DateTime.now())}',
-                    style: pw.TextStyle(font: pw.Font.ttf(ttf))),
-              ],
+            return pw.Directionality(
+              textDirection: pw.TextDirection.rtl,
+              child: pw.Column(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  // Contract header
+                  pw.Header(
+                    level: 0,
+                    child: pw.Text('ڕێکەوتنامەی پارێزەر',
+                        style: pw.TextStyle(
+                          fontSize: 24,
+                          fontWeight: pw.FontWeight.bold,
+                          font: pw.Font.ttf(boldTtf),
+                        )),
+                  ),
+                  // Guard's personal information
+                  pw.SizedBox(height: 20),
+                  pw.Text('ئەم ڕێکەوتنامەیە لە نێوان کۆمپانیای پاراستنی کینگفۆرس و:',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.SizedBox(height: 10),
+                  pw.Text('ناو: ${_nameController.text}',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.Text('ژمارەی ناسنامە: ${_idNumberController.text}',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.Text('ناونیشان: ${_addressController.text}',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.Text('ژمارەی مۆبایل: ${_phoneController.text}',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  // Contract details
+                  pw.SizedBox(height: 20),
+                  pw.Text('وردەکارییەکانی ڕێکەوتنامە:',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.Text('بەرواری دەستپێکردن: ${_startDateController.text}',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.Text('مووچەی مانگانە: \$${_salaryController.text}',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  // Terms and conditions
+                  pw.SizedBox(height: 20),
+                  pw.Text('مەرج و ڕێساکان:',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.Text('١. پارێزەرەکە پابەندە بە پاراستنی نهێنی.',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.Text('٢. پارێزەرەکە لە کاتە دیاریکراوەکانی کاردا کار دەکات.',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.Text('٣. پارێزەرەکە پابەندە بە یاسا و ڕێساکانی کۆمپانیا.',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  // Signature section
+                  pw.SizedBox(height: 20),
+                  pw.Text('واژۆ: ___________________',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                  pw.Text('بەروار: ${DateFormat('yyyy-MM-dd').format(DateTime.now())}',
+                      style: pw.TextStyle(font: pw.Font.ttf(ttf))),
+                ],
+              ),
             );
           },
         ),
@@ -290,12 +293,12 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
               TextFormField(
                 controller: _nameController,
                 decoration: const InputDecoration(
-                  labelText: 'Full Name',
+                  labelText: 'ناو',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the name';
+                    return 'تکایە ناو بنووسە';
                   }
                   return null;
                 },
@@ -305,12 +308,12 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
               TextFormField(
                 controller: _idNumberController,
                 decoration: const InputDecoration(
-                  labelText: 'ID Number',
+                  labelText: 'ژمارەی ناسنامە',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the ID number';
+                    return 'تکایە ژمارەی ناسنامە بنووسە';
                   }
                   return null;
                 },
@@ -320,12 +323,12 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
               TextFormField(
                 controller: _addressController,
                 decoration: const InputDecoration(
-                  labelText: 'Address',
+                  labelText: 'ناونیشان',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the address';
+                    return 'تکایە ناونیشان بنووسە';
                   }
                   return null;
                 },
@@ -335,12 +338,12 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
               TextFormField(
                 controller: _phoneController,
                 decoration: const InputDecoration(
-                  labelText: 'Phone Number',
+                  labelText: 'ژمارەی مۆبایل',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the phone number';
+                    return 'تکایە ژمارەی مۆبایل بنووسە';
                   }
                   return null;
                 },
@@ -350,14 +353,14 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
               TextFormField(
                 controller: _startDateController,
                 decoration: const InputDecoration(
-                  labelText: 'Start Date',
+                  labelText: 'بەرواری دەستپێکردن',
                   border: OutlineInputBorder(),
                 ),
                 onTap: () => _selectDate(context),
                 readOnly: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please select the start date';
+                    return 'تکایە بەرواری دەستپێکردن هەڵبژێرە';
                   }
                   return null;
                 },
@@ -367,13 +370,13 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
               TextFormField(
                 controller: _salaryController,
                 decoration: const InputDecoration(
-                  labelText: 'Monthly Salary',
+                  labelText: 'مووچەی مانگانە',
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the salary';
+                    return 'تکایە مووچە بنووسە';
                   }
                   return null;
                 },
@@ -386,7 +389,7 @@ class _SecurityGuardFormState extends State<SecurityGuardForm> {
                     _generatePDF();
                   }
                 },
-                child: const Text('Generate Contract'),
+                child: const Text('دروستکردنی ڕێکەوتنامە'),
               ),
             ],
           ),
