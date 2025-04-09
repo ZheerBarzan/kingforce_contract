@@ -9,23 +9,22 @@ class Sidebar extends StatelessWidget {
     return Drawer(
       child: Column(
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
+           DrawerHeader(
+            decoration: const BoxDecoration(
               color: Colors.blue,
             ),
             child: Center(
-              child: Text(
-                'کینگفۆرس',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: Image.asset(
+                'assets/images/logo.png',
+                fit: BoxFit.cover,
+                width: 100,
+                height: 100,
               ),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.description),
-            title: const Text('دروستکردنی ڕێکەوتنامە'),
+            title: const Text('Generate Contract'),
             onTap: () {
               Navigator.pop(context); // Close the drawer first
               NavigationService.navigateTo('/generate');
@@ -33,7 +32,7 @@ class Sidebar extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.settings),
-            title: const Text('ڕێکخستنەکان'),
+            title: const Text('Settings'),
             onTap: () {
               Navigator.pop(context); // Close the drawer first
               NavigationService.navigateTo('/settings');
@@ -43,7 +42,7 @@ class Sidebar extends StatelessWidget {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.person),
-            title: const Text('پڕۆفایل'),
+            title: const Text('Profile'),
             onTap: () {
               Navigator.pop(context); // Close the drawer first
               NavigationService.navigateTo('/profile');

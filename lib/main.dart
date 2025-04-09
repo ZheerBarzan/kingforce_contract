@@ -11,16 +11,22 @@
 /// - Cross-platform support (Android and iOS)
 
 import 'package:flutter/material.dart';
+import 'package:kingforce_contract/themes/theme_provider.dart';
 import 'viewmodels/contract_viewmodel.dart';
 import 'widgets/contract_form.dart';
 import 'widgets/sidebar.dart';
 import 'screens/settings_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/splash_screen.dart';
 import 'services/navigation_service.dart';
+import 'package:provider/provider.dart';
 
 /// The main entry point of the application
 void main() {
-  runApp(const MyApp());
+   runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => ThemeProvider()),
+   
+  ], child: const MyApp()));
 }
 
 /// The root widget of the application
@@ -28,21 +34,21 @@ void main() {
 /// Sets up the basic app configuration including:
 /// - App title
 /// - Theme (using Material 3 with blue color scheme)
-/// - Initial screen (ContractScreen)
+/// - Initial screen (SplashScreen)
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Security Guard Contract',
       navigatorKey: NavigationService.navigatorKey,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
-      initialRoute: '/generate',
+            theme: Provider.of<ThemeProvider>(context).themeData,
+
+      initialRoute: '/splash',
       routes: {
+        '/splash': (context) => const SplashScreen(),
         '/generate': (context) => const ContractScreen(),
         '/settings': (context) => const SettingsScreen(),
         '/profile': (context) => const ProfileScreen(),
