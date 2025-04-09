@@ -115,7 +115,8 @@ class ContractForm extends StatelessWidget {
                   },
             child: viewModel.isLoading
                 ? const CircularProgressIndicator()
-                : const Text('دروستکردنی ڕێکەوتنامە'),
+                :  Text('دروستکردنی ڕێکەوتنامە',
+                    style: TextStyle(fontSize: 16,color: Theme.of(context).colorScheme.inversePrimary)),
           ),
           if (viewModel.errorMessage != null)
             Padding(

@@ -99,7 +99,7 @@ class _ContractScreenState extends State<ContractScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('ڕێکەوتنامەی پارێزەر'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       drawer: const Sidebar(),
       body: SingleChildScrollView(

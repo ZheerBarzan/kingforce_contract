@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kingforce_contract/themes/theme_provider.dart';
 import '../services/navigation_service.dart';
 
 class Sidebar extends StatelessWidget {
@@ -10,8 +11,8 @@ class Sidebar extends StatelessWidget {
       child: Column(
         children: [
            DrawerHeader(
-            decoration: const BoxDecoration(
-              color: Colors.blue,
+            decoration:  BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
             ),
             child: Center(
               child: Image.asset(
